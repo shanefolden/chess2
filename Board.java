@@ -19,11 +19,11 @@ public class Board extends JPanel {
   }
 
   public void drawBoard(Graphics g) {
-    drawLines(g);
-    drawSpaces(g);
+    drawEdges(g);
+    fillSquares(g);
   }
 
-  public void drawLines(Graphics g) {
+  public void drawEdges(Graphics g) {
     for (int i = 0; i < 8; i++) {
       int height = i == 0 || i == 7 ? 15 : 10;
       g.fillRect(100, i * SQUARE_LENGTH + 40, ROW_WIDTH, height);
@@ -35,7 +35,7 @@ public class Board extends JPanel {
     }
   }
 
-  public void drawSpaces(Graphics g) {
+  public void fillSquares(Graphics g) {
     for (int i = 0; i < 7; i++) {
       for (int j = 0; j < 7; j++) {
         Color squareColor = (i + j) % 2 == 0
