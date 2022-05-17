@@ -13,7 +13,7 @@ public class Game extends JPanel{
     private int currentGame[][];
     
     public void startGame(Graphics g){
-
+        
     }
     
 }
