@@ -18,20 +18,14 @@ import javax.swing.JTextField;
 
 public class Screen extends JPanel {
 
-
   public Dimension getPreferredSize() {
     //Sets the size of the panel
     return new Dimension(1200, 1000);
   }
 
-
   public void paintComponent(Graphics g) {
     super.paintComponent(g);
 
     Board board = new Board(g);
-    
-
   }
-
- 
 }
