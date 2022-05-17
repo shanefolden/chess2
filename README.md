@@ -13,9 +13,9 @@ $ git clone https://github.com/shanefolden/chess2.git
 ```
 &nbsp;
 
-Navigate into the directory
+Navigate into the source file directory
 ```
-$ cd chess2
+$ cd chess2/source
 ```
 &nbsp;
 
