@@ -12,7 +12,7 @@ public class Board extends JPanel {
   BufferedImage buffered;
   final int ROW_WIDTH = 805;
   final int COL_HEIGHT = 805;
-  final int SQUARE_LENGTH = 115;
+  final int SQUARE_LENGTH = 113;
 
   public Board(Graphics g) {
     drawBoard(g);
@@ -26,12 +26,12 @@ public class Board extends JPanel {
   public void drawLines(Graphics g) {
     for (int i = 0; i < 8; i++) {
       int height = i == 0 || i == 7 ? 15 : 10;
-      g.fillRect(100, i * 113 + 40, ROW_WIDTH, height);
+      g.fillRect(100, i * SQUARE_LENGTH + 40, ROW_WIDTH, height);
     }
     // draw cols
     for (int i = 0; i < 8; i++) {
       int width = i == 0 || i == 7 ? 15 : 10;
-      g.fillRect(i * 113 + 100, 40, width, COL_HEIGHT);
+      g.fillRect(i * SQUARE_LENGTH + 100, 40, width, COL_HEIGHT);
     }
   }
 
@@ -46,8 +46,8 @@ public class Board extends JPanel {
 
         g.setColor(squareColor);
         g.fillRect(
-          i * 113 + 100 + xOffset,
-          j * 113 + 40 + yOffset,
+          i * SQUARE_LENGTH + 100 + xOffset,
+          j * SQUARE_LENGTH + 40 + yOffset,
           SQUARE_LENGTH - xOffset,
           SQUARE_LENGTH - yOffset
         );
