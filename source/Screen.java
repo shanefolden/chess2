@@ -27,7 +27,7 @@ public class Screen extends JPanel {
     super.paintComponent(g);
 
     Board board = new Board(g);
-    Game game = new Game();
+    GameManager game = new GameManager();
     game.startGame(g);
   }
 }

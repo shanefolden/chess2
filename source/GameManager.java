@@ -8,7 +8,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 
-public class Game extends JPanel{
+public class GameManager extends JPanel{
 
     private int currentGame[][];
     
