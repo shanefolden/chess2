@@ -9,14 +9,9 @@ import javax.swing.JPanel;
 
 public class Board extends JPanel {
 
-  BufferedImage buffered;
-  final int ROW_WIDTH = 918;
-  final int COL_HEIGHT = 918;
-  final int SQUARE_LENGTH = 113;
-
-  public Board(Graphics g) {
-    drawBoard(g);
-  }
+  private final int ROW_WIDTH = 918;
+  private final int COL_HEIGHT = 918;
+  private final int SQUARE_LENGTH = 113;
 
   public void drawBoard(Graphics g) {
     drawEdges(g);

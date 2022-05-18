@@ -11,6 +11,7 @@ public class Chess {
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.pack();
     frame.setVisible(true);
+    sc.play();
     //sc.animate();
 
   }

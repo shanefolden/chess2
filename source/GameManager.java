@@ -4,16 +4,18 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
+public class GameManager extends JPanel {
 
-public class GameManager extends JPanel{
+  private int currentGame[][];
 
-    private int currentGame[][];
-    
-    public void startGame(Graphics g){
-        
-    }
-    
+  public void startGame() {
+    ArrayList<Piece> pieces = new ArrayList<Piece>();
+    pieces.add(new Pawn(0, 0, true));
+    System.out.println("Arraylist size: " + pieces.size());
+    System.out.println(pieces.get(0).toString());
+  }
 }

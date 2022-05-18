@@ -18,16 +18,21 @@ import javax.swing.JTextField;
 
 public class Screen extends JPanel {
 
+  private Board board = new Board();
+  private GameManager game = new GameManager();
+
   public Dimension getPreferredSize() {
     //Sets the size of the panel
     return new Dimension(1200, 1000);
   }
 
+  public void play() {
+    game.startGame();
+  }
+
   public void paintComponent(Graphics g) {
     super.paintComponent(g);
 
-    Board board = new Board(g);
-    GameManager game = new GameManager();
-    game.startGame(g);
+    board.drawBoard(g);
   }
 }
