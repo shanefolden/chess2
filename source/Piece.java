@@ -23,13 +23,6 @@ public class Piece {
     return position;
   }
 
-  public String getTag() {
-      if(color == Clr.WHITE) {
-          return "WP";
-      } else {
-          return "BP";
-      }
-  }
 
   public void setPosition(int x, int y) {
     position[0] = x;
