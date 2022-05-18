@@ -49,4 +49,28 @@ public class Board extends JPanel {
       }
     }
   }
+
+  public int[] getSquare(int x, int y) {
+    int xMin;
+    int xMax;
+    int yMin;
+    int yMax;
+
+    for (int i = 0; i < 8; i++) {
+      for (int j = 0; j < 8; j++) {
+        int xOffset = i == 0 || i == 8 ? 15 : 10;
+        int yOffset = j == 0 || j == 8 ? 15 : 10;
+
+        xMin = i * SQUARE_LENGTH + 100 + xOffset;
+        xMax = i * SQUARE_LENGTH + 100 + SQUARE_LENGTH - xOffset;
+        yMin = j * SQUARE_LENGTH + 40 + yOffset;
+        yMax = j * SQUARE_LENGTH + 40 + SQUARE_LENGTH - yOffset;
+
+        if (x >= xMin && x <= xMax && y >= yMin && y <= yMax) {
+          return new int[] { j, i };
+        }
+      }
+    }
+    return new int[] { -1, -1 };
+  }
 }

@@ -6,6 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -16,10 +18,15 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class Screen extends JPanel {
+public class Screen extends JPanel implements MouseListener {
 
   private Board board = new Board();
   private GameManager game = new GameManager();
+
+  public Screen() {
+    setBackground(new Color(230, 230, 230));
+    addMouseListener(this);
+  }
 
   public Dimension getPreferredSize() {
     //Sets the size of the panel
@@ -34,5 +41,19 @@ public class Screen extends JPanel {
     super.paintComponent(g);
 
     board.drawBoard(g);
+  }
+
+  public void mousePressed(MouseEvent e) {}
+
+  public void mouseReleased(MouseEvent e) {}
+
+  public void mouseEntered(MouseEvent e) {}
+
+  public void mouseExited(MouseEvent e) {}
+
+  public void mouseClicked(MouseEvent e) {
+    game.testFunction();
+    int[] coords = board.getSquare(e.getX(), e.getY());
+    game.getClick(coords);
   }
 }

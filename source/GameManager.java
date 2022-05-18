@@ -9,35 +9,98 @@ import java.util.Arrays;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
+/*
+ TERMS
+GameState = whos turn it is (white or black), and whether they are currently clicking a source or desitnation piece
+boardState = the current state of the board (What pieces are on the board and where)
+Pieces = A list of all the pieces on the board
+
+
+ */
+
 public class GameManager extends JPanel {
 
-  private int currentGame[][];
-
-  public void startGame() {
-    ArrayList<Piece> pieces = createPieces();
-    String[][] currentGame = getGameState(pieces);
-    printGameState(currentGame);
+  enum GameState {
+    white_choose_source,
+    white_choose_destination,
+    black_choose_source,
+    black_choose_destination,
+    game_over,
   }
 
-  // Function to get the state of the game board in string form
-  private String[][] getGameState(ArrayList<Piece> pieces) {
+  private String currentBoardPosition[][];
+  Board board;
+  GameState gameState;
+  ArrayList<Piece> pieces;
+
+  public void startGame() {
+    board = new Board();
+    pieces = createPieces();
+    currentBoardPosition = getBoardPosition(pieces);
+    printBoardPosition(currentBoardPosition);
+    gameState = GameState.white_choose_source;
+  }
+
+  private String[][] getBoardPosition(ArrayList<Piece> pieces) {
     // Generate an empty game board filled with "XX"
-    String[][] gameState = new String[8][8];
-    for (String[] row : gameState) Arrays.fill(row, "XX");
+    String[][] newBoardPosition = new String[8][8];
+    for (String[] row : newBoardPosition) Arrays.fill(row, "XX");
 
     // Loop through all pieces and populate the game  board with the correct tags
     for (Piece piece : pieces) {
-      gameState[piece.getPosition()[0]][piece.getPosition()[1]] =
+      newBoardPosition[piece.getPosition()[0]][piece.getPosition()[1]] =
         piece.getTag();
     }
 
-    return gameState;
+    return newBoardPosition;
   }
 
-  private void printGameState(String[][] gameState) {
-    for (String[] row : gameState) {
+  private void printBoardPosition(String[][] boardPosition) {
+    for (String[] row : boardPosition) {
       System.out.println(Arrays.toString(row).replace("], ", "]\n"));
     }
+  }
+
+  public void testFunction() {
+    System.out.println("test");
+  }
+
+  public void getClick(int[] position) {
+    if (position[0] == -1 || position[1] == -1) {
+      return;
+    }
+
+    switch (gameState) {
+      case white_choose_source:
+        if (isValidSource('W', position)) {
+          System.out.println("valid piece");
+          gameState = GameState.black_choose_source;
+        } else {
+          System.out.println("invalid piece");
+        }
+        break;
+      case white_choose_destination:
+        //isValidDestination("W", position);
+        break;
+      case black_choose_source:
+        if (isValidSource('B', position)) {
+          System.out.println("valid piece");
+          gameState = GameState.white_choose_source;
+        } else {
+          System.out.println("invalid piece");
+        }
+        break;
+      case black_choose_destination:
+        //isValidDestination("B", position);
+        break;
+      default:
+        break;
+    }
+  }
+
+  public boolean isValidSource(char player, int[] position) {
+    System.out.println(currentBoardPosition[position[0]][position[1]]);
+    return (currentBoardPosition[position[0]][position[1]].charAt(0) == player);
   }
 
   private ArrayList<Piece> createPieces() {
