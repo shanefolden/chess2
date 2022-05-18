@@ -1,20 +1,20 @@
-public class Pawn extends Piece {
+public class King extends Piece {
 
-  public Pawn(int x, int y, boolean isWhite) {
+  public King(int x, int y, boolean isWhite) {
     super(x, y, isWhite);
   }
 
   @Override
   public String toString() {
-    return "Pawn " + super.toString();
+    return "King " + super.toString();
   }
 
   @Override
   public String getTag() {
     if (color == Clr.WHITE) {
-      return "WP";
+      return "WK";
     } else {
-      return "BP";
+      return "BK";
     }
   }
 }

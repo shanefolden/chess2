@@ -6,7 +6,7 @@ public class Piece {
   }
 
   private int[] position = new int[2];
-  private final Clr color;
+  public final Clr color;
 
   // Initialize piece with x coordinate, y coordinate, and color
   public Piece(int x, int y, boolean isWhite) {
@@ -23,10 +23,13 @@ public class Piece {
     return position;
   }
 
-
   public void setPosition(int x, int y) {
     position[0] = x;
     position[1] = y;
+  }
+
+  public String getTag() {
+    return "";
   }
 
   public String toString() {
