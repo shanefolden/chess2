@@ -32,10 +32,12 @@ public class GameManager extends JPanel {
   Board board;
   GameState gameState;
   ArrayList<Piece> pieces;
+  GameLogic logic;
 
   public void startGame() {
     board = new Board();
     pieces = createPieces();
+    logic = new GameLogic();
     currentBoardPosition = getBoardPosition(pieces);
     printBoardPosition(currentBoardPosition);
     gameState = GameState.white_choose_source;
@@ -61,6 +63,10 @@ public class GameManager extends JPanel {
     }
   }
 
+  public String[][] getBoardPosition() {
+    return currentBoardPosition;
+  }
+
   public void testFunction() {
     System.out.println("test");
   }
@@ -80,7 +86,7 @@ public class GameManager extends JPanel {
         }
         break;
       case white_choose_destination:
-        //isValidDestination("W", position);
+        //if logic.isValidMove('w')
         break;
       case black_choose_source:
         if (isValidSource('B', position)) {

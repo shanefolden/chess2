@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Pawn extends Piece {
 
   public Pawn(int x, int y, boolean isWhite) {
@@ -17,4 +19,6 @@ public class Pawn extends Piece {
       return "BP";
     }
   }
+  //@Override
+  //public ArrayList<int[]> getMoves() {}
 }

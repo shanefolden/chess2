@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Piece {
 
   enum Clr {
@@ -30,6 +32,10 @@ public class Piece {
 
   public String getTag() {
     return "";
+  }
+
+  public ArrayList<int[]> getMoves() {
+    return new ArrayList<int[]>();
   }
 
   public String toString() {
