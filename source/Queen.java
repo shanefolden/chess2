@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Queen extends Piece {
 
   public Queen(int x, int y, boolean isWhite) {
@@ -16,5 +18,32 @@ public class Queen extends Piece {
     } else {
       return "BQ";
     }
+  }
+
+  @Override
+  public ArrayList<int[]> getMoves() {
+    ArrayList<int[]> validMoves = new ArrayList<int[]>();
+    GameManager game = new GameManager();
+    var boardPosition = game.getBoardPosition();
+    int[] piecePosition = getPosition();
+    int pieceX = piecePosition[0];
+    int pieceY = piecePosition[1];
+
+    // Check all 4 directions
+    validMoves = queenMoves(pieceX, pieceY, boardPosition, validMoves);
+    return validMoves;
+  }
+
+  public ArrayList<int[]> queenMoves(
+    int pieceX,
+    int pieceY,
+    String[][] boardPosition,
+    ArrayList<int[]> validMoves
+  ) {
+    Bishop fakeBishop = new Bishop(pieceX, pieceY, color == Clr.WHITE);
+    Rook fakeRook = new Rook(pieceX, pieceY, color == Clr.WHITE);
+    validMoves = fakeBishop.getMoves();
+    validMoves.addAll(fakeRook.getMoves());
+    return validMoves;
   }
 }

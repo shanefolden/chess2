@@ -20,9 +20,18 @@ public class Bishop extends Piece {
     }
   }
 
-  String private Boolean isDifferentColor(String piece){
-    if
-
+  private Boolean isDifferentColor(String piece) {
+    char piece_color = piece.charAt(0);
+    if (color == Clr.WHITE) {
+      if (piece_color == 'W') {
+        return false;
+      }
+    } else if (color == Clr.BLACK) {
+      if (piece_color == 'B') {
+        return false;
+      }
+    }
+    return true;
   }
 
   @Override
@@ -53,28 +62,24 @@ public class Bishop extends Piece {
           validMoves.add(new int[] { pieceX + i, pieceY + i });
         } else if (isDifferentColor(boardPosition[pieceX + i][pieceY + i])) {
           validMoves.add(new int[] { pieceX + i, pieceY + i });
-        } 
+        }
       }
-      else {break;}
       // Check up-left
       if (pieceX - i >= 0 && pieceY + i < 8) {
         if (boardPosition[pieceX - i][pieceY + i] == "XX") {
           validMoves.add(new int[] { pieceX - i, pieceY + i });
-        } else if  (isDifferentColor(boardPosition[pieceX - i][pieceY + i])) {
+        } else if (isDifferentColor(boardPosition[pieceX - i][pieceY + i])) {
           validMoves.add(new int[] { pieceX - i, pieceY + i });
-        } 
         }
-        else{ break;}
+      }
       // Check down-right
       if (pieceX + i < 8 && pieceY - i >= 0) {
         if (boardPosition[pieceX + i][pieceY - i] == "XX") {
           validMoves.add(new int[] { pieceX + i, pieceY - i });
-        } 
-        else if (isDifferentColor(boardPosition[pieceX + i][pieceY - i])) {
+        } else if (isDifferentColor(boardPosition[pieceX + i][pieceY - i])) {
           validMoves.add(new int[] { pieceX + i, pieceY - i });
         }
       }
-      else{break;}
       // Check down-left
       if (pieceX - i >= 0 && pieceY - i >= 0) {
         if (boardPosition[pieceX - i][pieceY - i] == "XX") {
@@ -83,9 +88,7 @@ public class Bishop extends Piece {
           validMoves.add(new int[] { pieceX - i, pieceY - i });
         }
       }
-      else {break;}
-      return validMoves;
     }
-    
+    return validMoves;
   }
 }
